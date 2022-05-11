@@ -1,0 +1,286 @@
+#root {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textaria {
+  height: 240px;
+  border: 1px solid black;
+  width: 700px;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 880px;
+  gap: 10px 0;
+  padding-top: 20px;
+
+  .caps {
+    position: relative;
+
+    &::before {
+      content: '';
+      background: red;
+      width: 4px;
+      height: 4px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      display: none;
+      border-radius: 5px;
+    }
+  }
+
+  &[data-lang="ru"] {
+    .en {
+      display: none;
+    }
+
+    .capsLockRu {
+      display: none;
+    }
+
+    .capsLockEn {
+      display: none;
+    }
+
+    .eventShiftEn {
+      display: none;
+    }
+
+    .eventShiftRu {
+      display: none;
+    }
+  }
+
+  &[data-lang="en"] {
+    .ru {
+      display: none;
+    }
+
+    .capsLockRu {
+      display: none;
+    }
+
+    .capsLockEn {
+      display: none;
+    }
+
+    .eventShiftEn {
+      display: none;
+    }
+
+    .eventShiftRu {
+      display: none;
+    }
+  }
+
+  &[data-lang="capsLockEn"] {
+    .ru {
+      display: none;
+    }
+
+    .caps {
+      &::before {
+        display: block;
+      }
+    }
+
+    .capsLockRu {
+      display: none;
+    }
+
+    .en {
+      display: none;
+    }
+
+    .eventShiftEn {
+      display: none;
+    }
+
+    .eventShiftRu {
+      display: none;
+    }
+  }
+
+  &[data-lang="capsLockRu"] {
+    .caps {
+      &::before {
+        display: block;
+      }
+    }
+
+    .ru {
+      display: none;
+    }
+
+    .capsLockEn {
+      display: none;
+    }
+
+    .en {
+      display: none;
+    }
+
+    .eventShiftEn {
+      display: none;
+    }
+
+    .eventShiftRu {
+      display: none;
+    }
+  }
+
+  &[data-lang="eventShiftEn"] {
+    .ru {
+      display: none;
+    }
+
+    .en {
+      display: none;
+    }
+
+    .capsLockEn {
+      display: none;
+    }
+
+    .capsLockRu {
+      display: none;
+    }
+
+    .eventShiftRu {
+      display: none;
+    }
+  }
+
+  &[data-lang="eventShiftRu"] {
+    .ru {
+      display: none;
+    }
+
+    .en {
+      display: none;
+    }
+
+    .capsLockEn {
+      display: none;
+    }
+
+    .capsLockRu {
+      display: none;
+    }
+
+    .eventShiftEn {
+      display: none;
+    }
+  }
+
+  &__key {
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    transition: all .3s;
+    position: relative;
+
+    &::after {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      content: '';
+    }
+
+
+    &:hover {
+      background: #fff;
+      color: #111;
+      outline: 1px solid black;
+    }
+
+    &--active {
+      background: #fff;
+      color: #111;
+      outline: 1px solid black;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .backspase {
+    width: 84px;
+  }
+
+  .tab {
+    width: 80px;
+  }
+
+  .enter {
+    width: 55px;
+  }
+
+  .shift-left {
+    width: 54px;
+  }
+
+  .shift-right {
+    width: 130px;
+  }
+
+  .contrl-left {
+    width: 71px;
+  }
+
+  .contrl-right {
+    width: 70px;
+  }
+
+  .alt-left {
+    width: 56px;
+  }
+
+  .space {
+    width: 307px;
+  }
+
+  .arrow-left {
+    transform: rotate(180deg);
+  }
+
+  .arrow-down {
+    transform: rotate(90deg);
+  }
+
+  .arrow-up {
+    transform: rotate(-90deg);
+  }
+}
