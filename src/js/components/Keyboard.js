@@ -13,11 +13,16 @@ export default class Keyboard {
     this.p = document.createElement('p');
     this.linux.innerHTML = 'Клавиатура создана в операционной системе Linux';
     this.p.innerHTML = 'Для переключения языка комбинация: левыe ctrl + alt';
+    this.link = 'https://github.com/ChristopherGladyshev/virtual-keyboard/pull/1';
+    this.a = document.createElement('a');
+    this.a.href = this.link;
+    this.a.innerHTML = 'pull request';
     this.keyboardContainer.classList.add('keyboard');
     this.container.appendChild(this.textarea);
     this.container.appendChild(this.keyboardContainer);
     this.container.appendChild(this.linux);
     this.container.appendChild(this.p);
+    this.container.appendChild(this.a);
     this.root.appendChild(this.container);
     this.textarea.focus();
     const local = localStorage.getItem('lang');
