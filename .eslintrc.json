@@ -1,0 +1,35 @@
+{
+
+  "env": {
+    "browser": true,
+    // es2021: true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@babel/eslint-parser",
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "prefer-template": "error",
+    "indent": ["error", 2, {"FunctionExpression": {"parameters": "first"},"SwitchCase": 1}],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"],
+    "max-len": ["error", { "code": 121, "tabWidth": 2 }],
+    "comma-dangle": ["error", "only-multiline"],
+    "yoda": ["error", "never"],
+    "array-bracket-spacing": ["error", "never"],
+    "block-spacing": ["error", "always"],
+    "brace-style": ["error", "1tbs"],
+    "eol-last": ["error", "always"],
+    "keyword-spacing": "error",
+    "lines-around-comment": ["error", { "beforeLineComment": false }],
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+    "max-params": ["error", 6],
+    "no-unneeded-ternary": ["error", { "defaultAssignment": false }],
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": ["error", "always"],
+    "arrow-spacing": ["error"],
+    "no-duplicate-imports": ["error", { "includeExports": true }],
+    "no-var": ["error"]
+  }
+}
