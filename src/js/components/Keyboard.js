@@ -40,7 +40,7 @@ export default class Keyboard {
       const end = this.textarea.selectionEnd;
       const start = this.textarea.selectionStart;
       if (!target.classList.contains('keyboard__key') || dataset.hot === 'true') {
-        if (dataset.code === 'Tab') return this.textarea.value = `${value}\t`;
+        if (dataset.code === 'Tab') return this.tab();
         if (dataset.code === 'Backspace') return this.backspace(start, end, value);
         if (dataset.code === 'Enter') return this.enter(start, end, value);
         if (dataset.code === 'Delete') return this.delete(start, end, value);
@@ -69,7 +69,7 @@ export default class Keyboard {
     window.addEventListener('keydown', (event) => {
       if (event.keyCode === 9) {
         event.preventDefault();
-        this.textarea.value = `${this.textarea.value}\t`;
+        this.tab();
       }
       for (let i = 0; i < key.length; i++) {
         if (key[i].dataset.code == event.code) {
@@ -186,7 +186,6 @@ export default class Keyboard {
       this.textarea.value = `${value}\n`;
       this.textarea.selectionStart = start + 1;
       this.textarea.selectionEnd = start + 1;
-
     } else if (start === end) {
       const arr = value.split('');
       arr.splice(start, 0, '\n');
@@ -258,6 +257,33 @@ export default class Keyboard {
     if (this.keyboardContainer.dataset.lang == 'eventShiftRu') return this.keyboardContainer.dataset.lang = 'ru';
     if (this.keyboardContainer.dataset.lang == 'en') return this.keyboardContainer.dataset.lang = 'eventShiftEn';
     if (this.keyboardContainer.dataset.lang == 'eventShiftEn') return this.keyboardContainer.dataset.lang = 'en';
+  }
+
+  tab() {
+    const end = this.textarea.selectionEnd;
+    const start = this.textarea.selectionStart;
+    const value = this.textarea.value;
+    if (value.length === start) {
+      this.textarea.value = `${value}\t`;
+      this.textarea.selectionStart = start + 1;
+      this.textarea.selectionEnd = start + 1;
+    } else if (start === end) {
+      const arr = value.split('');
+      arr.splice(start, 0, '\t');
+      const str = arr.join('');
+      this.textarea.value = str;
+      this.textarea.selectionStart = start + 1;
+      this.textarea.selectionEnd = start + 1;
+    } else {
+      const arr = value.split('');
+      const amount = end - start;
+      arr.splice(start, amount);
+      arr.splice(start, 0, '\t');
+      const str = arr.join('');
+      this.textarea.value = str;
+      this.textarea.selectionStart = start + 1;
+      this.textarea.selectionEnd = start + 1;
+    }
   }
 
   chekLang() {
